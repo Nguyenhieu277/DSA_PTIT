@@ -18,7 +18,7 @@ void TestCase(){
         int remainder = n - 7 * i;
         if(remainder % 4 == 0){
             flag = 1;
-            int j = remainder / 4;
+            int j = remainder / 4; 
             for(int x = 0; x < j; x++) cout << 4;
             for(int y = 0; y < i; y++) cout << 7;
             break;
