@@ -1,0 +1,1 @@
+{"name":"Local: xau_AB_co_do_dai_N","url":"d:\\work\\DSA_PTIT\\xau_AB_co_do_dai_N.cpp","tests":[{"id":1723476388566,"input":"2\n2\n3","output":"AA AB BA BB\nAAA AAB ABA ABB BAA BAB BBA BBB"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\work\\DSA_PTIT\\xau_AB_co_do_dai_N.cpp","group":"local","local":true}

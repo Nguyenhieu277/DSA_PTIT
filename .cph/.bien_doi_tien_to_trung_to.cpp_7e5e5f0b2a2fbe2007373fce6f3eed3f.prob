@@ -1,0 +1,1 @@
+{"name":"Local: bien_doi_tien_to_trung_to","url":"d:\\work\\DSA_PTIT\\bien_doi_tien_to_trung_to.cpp","tests":[{"id":1724640354105,"input":"2\n*+AB-CD\n*-A/BC-/AKL","output":"((A+B)*(C-D))\n((A-(B/C))*((A/K)-L)"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\work\\DSA_PTIT\\bien_doi_tien_to_trung_to.cpp","group":"local","local":true}

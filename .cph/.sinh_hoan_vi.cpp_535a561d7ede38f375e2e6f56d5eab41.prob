@@ -1,0 +1,1 @@
+{"name":"Local: sinh_hoan_vi","url":"d:\\work\\DSA_PTIT\\sinh_hoan_vi.cpp","tests":[{"id":1723475221876,"input":"2\n2\n3","output":"12 21\n123 132 213 231 312 321"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\work\\DSA_PTIT\\sinh_hoan_vi.cpp","group":"local","local":true}

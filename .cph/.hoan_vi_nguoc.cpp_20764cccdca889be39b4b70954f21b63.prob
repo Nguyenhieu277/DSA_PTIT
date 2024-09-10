@@ -1,0 +1,1 @@
+{"name":"Local: hoan_vi_nguoc","url":"d:\\work\\DSA_PTIT\\hoan_vi_nguoc.cpp","tests":[{"id":1723475327814,"input":"2\n2\n3","output":"21 12 \n321 312 231 213 132 123"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\work\\DSA_PTIT\\hoan_vi_nguoc.cpp","group":"local","local":true}

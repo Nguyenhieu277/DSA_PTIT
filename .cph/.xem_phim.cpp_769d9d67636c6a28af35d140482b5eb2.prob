@@ -1,0 +1,1 @@
+{"name":"Local: xem_phim","url":"d:\\work\\DSA_PTIT\\xem_phim.cpp","tests":[{"id":1723864745643,"input":"259 5\n81\n58\n42\n33\n61","output":"242"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\work\\DSA_PTIT\\xem_phim.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: kiem_tra_day_ngoac_dung","url":"d:\\work\\DSA_PTIT\\kiem_tra_day_ngoac_dung.cpp","tests":[{"id":1724762997385,"input":"2\n[()]{}{[()()]()}\n[(])","output":"YES\nNO"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\work\\DSA_PTIT\\kiem_tra_day_ngoac_dung.cpp","group":"local","local":true}

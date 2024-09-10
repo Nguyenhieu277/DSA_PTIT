@@ -1,0 +1,1 @@
+{"name":"Local: xau_nhi_phan_ke_tiep","url":"d:\\work\\DSA_PTIT\\xau_nhi_phan_ke_tiep.cpp","tests":[{"id":1723460189330,"input":"2\n010101\n111111","output":"010110\n000000"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\work\\DSA_PTIT\\xau_nhi_phan_ke_tiep.cpp","group":"local","local":true}

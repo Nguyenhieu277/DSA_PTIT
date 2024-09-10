@@ -1,0 +1,1 @@
+{"name":"Local: tron_hai_day","url":"d:\\work\\DSA_PTIT\\tron_hai_day.cpp","tests":[{"id":1723977207505,"input":"1\n3 3\n10 5 15\n20 3 2","output":"2 3 5 10 15 20"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\work\\DSA_PTIT\\tron_hai_day.cpp","group":"local","local":true}

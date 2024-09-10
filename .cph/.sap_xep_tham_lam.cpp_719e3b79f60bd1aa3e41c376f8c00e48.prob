@@ -1,0 +1,1 @@
+{"name":"Local: sap_xep_tham_lam","url":"d:\\work\\DSA_PTIT\\sap_xep_tham_lam.cpp","tests":[{"id":1723634396697,"input":"2\n7\n1 6 3 4 5 2 7\n7\n1 6 3 4 5 7 2","output":"Yes\nNo"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\work\\DSA_PTIT\\sap_xep_tham_lam.cpp","group":"local","local":true}

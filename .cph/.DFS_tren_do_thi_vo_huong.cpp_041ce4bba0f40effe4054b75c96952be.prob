@@ -1,0 +1,1 @@
+{"name":"Local: DFS_tren_do_thi_vo_huong","url":"d:\\work\\DSA_PTIT\\DFS_tren_do_thi_vo_huong.cpp","tests":[{"id":1724249544718,"input":"1\n6 9 5\n1 2\n1 3\n2 3\n2 4\n3 4\n3 5\n4 5\n4 6\n5 6","output":"5 3 1 2 4 6"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\work\\DSA_PTIT\\DFS_tren_do_thi_vo_huong.cpp","group":"local","local":true}

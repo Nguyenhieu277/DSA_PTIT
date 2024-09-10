@@ -1,0 +1,1 @@
+{"name":"Local: to_hop_so_co_tong_X","url":"d:\\work\\DSA_PTIT\\to_hop_so_co_tong_X.cpp","tests":[{"id":1725782620743,"input":"2\n4 8\n2 4 6 8\n2 9\n10 11","output":"5 {2 2 2 2} {2 2 4} {2 6} {4 4} {8}\n-1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\work\\DSA_PTIT\\to_hop_so_co_tong_X.cpp","group":"local","local":true}

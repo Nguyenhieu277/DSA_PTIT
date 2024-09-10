@@ -1,0 +1,1 @@
+{"name":"Local: tinh_gtri_bieu_thuc_tien_to","url":"d:\\work\\DSA_PTIT\\tinh_gtri_bieu_thuc_tien_to.cpp","tests":[{"id":1724676635681,"input":"2\n-+8/632\n-+7*45+20","output":"8\n25"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\work\\DSA_PTIT\\tinh_gtri_bieu_thuc_tien_to.cpp","group":"local","local":true}

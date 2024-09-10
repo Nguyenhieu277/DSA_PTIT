@@ -1,0 +1,1 @@
+{"name":"Local: doi_cho_it_nhat","url":"d:\\work\\DSA_PTIT\\doi_cho_it_nhat.cpp","tests":[{"id":1723885155832,"input":"2\n4\n4 3 2 1\n5\n1 5 4 3 2","output":"2\n2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\work\\DSA_PTIT\\doi_cho_it_nhat.cpp","group":"local","local":true}

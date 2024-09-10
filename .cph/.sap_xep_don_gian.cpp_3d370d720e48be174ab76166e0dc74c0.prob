@@ -1,0 +1,1 @@
+{"name":"Local: sap_xep_don_gian","url":"d:\\work\\DSA_PTIT\\sap_xep_don_gian.cpp","tests":[{"id":1723647241253,"input":"5\n4 1 2 5 3","output":"2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\work\\DSA_PTIT\\sap_xep_don_gian.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: hoan_vi_ke_tiep_cua_chuoi_so","url":"d:\\work\\DSA_PTIT\\hoan_vi_ke_tiep_cua_chuoi_so.cpp","tests":[{"id":1725521507248,"input":"3\n1 123\n2 279134399742\n3 987","output":"1 132\n2 279134423799\n3 BIGGEST"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\work\\DSA_PTIT\\hoan_vi_ke_tiep_cua_chuoi_so.cpp","group":"local","local":true}

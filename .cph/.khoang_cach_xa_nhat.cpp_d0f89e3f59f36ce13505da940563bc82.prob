@@ -1,0 +1,1 @@
+{"name":"Local: khoang_cach_xa_nhat","url":"d:\\work\\DSA_PTIT\\khoang_cach_xa_nhat.cpp","tests":[{"id":1724151101085,"input":"3\n9\n34 8 10 3 2 80 30 33 1\n6\n1 2 3 4 5 6\n6\n6 5 4 3 2 1","output":"6\n5\n-1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\work\\DSA_PTIT\\khoang_cach_xa_nhat.cpp","group":"local","local":true}

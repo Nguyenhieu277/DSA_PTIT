@@ -1,0 +1,1 @@
+{"name":"Local: bien_doi_trung_to_hau_to","url":"d:\\work\\DSA_PTIT\\bien_doi_trung_to_hau_to.cpp","tests":[{"id":1725584405438,"input":"2\n(A+(B+C))\n((A*B)+C)","output":"ABC++\nAB*C+"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\work\\DSA_PTIT\\bien_doi_trung_to_hau_to.cpp","group":"local","local":true}
