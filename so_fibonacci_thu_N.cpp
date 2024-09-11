@@ -17,8 +17,9 @@ struct Matrix{
             for(int j = 0; j < 2; j++){
                 res.a[i][j] = 0;
                 for(int k = 0; k < 2; k++){
-                    res.a[i][j] += ((x.a[i][k] % mod) * (y.a[k][j] % mod)) % mod;
+                    res.a[i][j] += (x.a[i][k] * y.a[k][j]) % mod;
                 }
+                res.a[i][j] %= mod;
             }
         }
         return res;
