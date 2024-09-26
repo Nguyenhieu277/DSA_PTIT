@@ -1,30 +1,18 @@
-#include <bits/stdc++.h>
-
+#include <iostream>
 using namespace std;
-typedef long long ll;
-const int mod = 1000000007;
-#define max_n 1001
-#define MAX 1000001
-#define Quick() ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 
-/*created by: HiuDev*/
-
-void solve(int n){
-    if(!n) return;
-    cout << n % 10;
-    return solve(n /= 10);
+long long sumFactorials(int n, long long currentFactorial) {
+    if (n == 0) return 0;  // Điều kiện dừng: tổng của 0 phần tử là 0
+    currentFactorial *= n;  // Tính giai thừa hiện tại: currentFactorial = n!
+    return currentFactorial + sumFactorials(n - 1, currentFactorial / n);  // Cộng giai thừa vào tổng và gọi đệ quy
 }
-void TestCase(){
+
+int main() {
     int n;
     cin >> n;
-    solve(n);
-}
-int main(){
-    Quick();
-    int t = 1;
-    while(t--){
-        TestCase();
-    }
+    
+    // Bắt đầu đệ quy với giai thừa hiện tại là 1
+    cout << sumFactorials(n, 1) << endl;
+    
     return 0;
 }
-/* No Code - No Bug */

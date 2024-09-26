@@ -4,55 +4,57 @@ using namespace std;
 typedef long long ll;
 const int mod = 1000000007;
 #define max_n 1001
-#define MAX 1000001
 #define Quick() ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 
 /*created by: HiuDev*/
 
-int minOverlap = INT_MAX;
 int n;
+vector<string> strs;
+int minOverlap = INT_MAX;
 int countOverlap(string a, string b){
     int frequency[26] = {0};
-    for(char it : a){
-        frequency[it - 'A']++;
-    }
-    for(char it : b){
-        frequency[it - 'A']++;
-    }
     int cnt = 0;
-    for(auto it : frequency){
+    for(char c : a){
+        frequency[c - 'A']++;
+    }
+    for(char c : b){
+        frequency[c - 'A']++;
+    }
+    for(int it : frequency){
         if(it == 2){
             cnt++;
         }
     }
     return cnt;
 }
-void backTracking(int idx, int currentOverlap, vector<string> &current){
+void backTracking(int idx, int currentOverlap){
     if(currentOverlap >= minOverlap) return;
     if(idx == n){
         minOverlap = currentOverlap;
         return;
     }
-    else if(currentOverlap < minOverlap){
+    else{
         for(int i = idx; i < n; i++){
-            swap(current[idx], current[i]);
+            swap(strs[i], strs[idx]);
             int newOverlap = currentOverlap;
             if(idx > 0){
-                newOverlap += countOverlap(current[idx - 1], current[idx]);
+                newOverlap += countOverlap(strs[idx - 1], strs[idx]);
             }
-            backTracking(idx + 1, newOverlap, current);
-            swap(current[idx], current[i]);
+            backTracking(idx + 1, newOverlap);
+            swap(strs[i], strs[idx]);
         }
     }
+    
 }
 void TestCase(){
     cin >> n;
-    vector<string> str;
+    strs.clear();
     for(int i = 0; i < n; i++){
         string s; cin >> s;
-        str.push_back(s);
+        strs.push_back(s);
     }
-    backTracking(0, 0, str);
+    minOverlap = INT_MAX;
+    backTracking(0, 0);
     cout << minOverlap << endl;
 }
 int main(){

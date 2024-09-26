@@ -1,0 +1,1 @@
+{"name":"Local: tim_duong","url":"d:\\work\\DSA_PTIT\\tim_duong.cpp","tests":[{"id":1726631287319,"input":"2\n5 5\n..S..\n****.\nT....\n****.\n.....\n5 5\nS....\n****.\n.....\n.****\n..T..","output":"YES\nNO"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\work\\DSA_PTIT\\tim_duong.cpp","group":"local","local":true}

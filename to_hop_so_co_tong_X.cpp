@@ -4,48 +4,40 @@ using namespace std;
 typedef long long ll;
 const int mod = 1000000007;
 #define max_n 1001
-#define MAX 1000001
 #define Quick() ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 
 /*created by: HiuDev*/
 
-vector<vector<int>> res;
+int n, k;
+vector<int> nums;
 vector<int> current;
-bool isIncreasing(vector<int> &v){
-    for(int i = 1; i < v.size(); i++){
-        if(v[i] < v[i - 1]){
-            return false;
-        }
+vector<vector<int>> res;
+void backTracking(int idx, int sum){
+    if(sum == k){
+        res.push_back(current);
+        return;
     }
-    return true;
-}
-void backTracking(int idx, vector<int> &v, int x, int sum){
-    if(sum == x){
-        if(isIncreasing(current)){
-            res.push_back(current);
-        }
-        return; 
-    }
-    else if(sum > x) return;
+    else if(sum > k || idx > n) return;
     else{
-        for(int i = idx; i < v.size(); i++){
-            current.push_back(v[i]);
-            backTracking(i, v, x, sum + v[i]);
-            current.pop_back();
+        for(int i = idx; i < n; i++){
+            if(current.empty() || (current.back() <= nums[i])){
+                current.push_back(nums[i]);
+                backTracking(idx, sum + nums[i]);
+                current.pop_back();
+            }
         }
     }
 }
 void TestCase(){
-    int n, x;
-    cin >> n >> x;
-    vector<int> v;
+    cin >> n >> k;
+    nums.clear();
+    current.clear();
+    res.clear();
     for(int i = 0; i < n; i++){
         int x; cin >> x;
-        v.push_back(x);
+        nums.push_back(x);
     }
-    res.clear();
-    current.clear();
-    backTracking(0, v, x, 0);
+    backTracking(0, 0);
     if(res.empty()){
         cout << -1 << endl;
     }
