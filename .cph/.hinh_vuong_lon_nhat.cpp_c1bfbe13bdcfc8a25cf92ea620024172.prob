@@ -1,0 +1,1 @@
+{"name":"Local: hinh_vuong_lon_nhat","url":"d:\\work\\DSA_PTIT\\hinh_vuong_lon_nhat.cpp","tests":[{"id":1727534019001,"input":"2\n6 5\n0 1 1 0 1\n1 1 0 1 0\n0 1 1 1 0\n1 1 1 1 0\n1 1 1 1 1\n0 0 0 0 0\n2 2\n0 0\n0 0","output":"3\n0"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\work\\DSA_PTIT\\hinh_vuong_lon_nhat.cpp","group":"local","local":true}

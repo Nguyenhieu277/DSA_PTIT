@@ -11,21 +11,19 @@ const int mod = 1000000007;
 void longestPalindromeSubstring(const string& str){
     int ans = INT_MIN;
     for(int i = 0; i < str.size(); i++){
-        if(str.size() % 2 != 0){
-            int left = i, right = i;
-            while(left >= 0 && right < str.size() && str[left] == str[right]){
-                if(ans < (right - left + 1)){
-                    ans = right - left + 1;
-                }
+        int left = i, right = i;
+        while(left >= 0 && right < str.size() && str[left] == str[right]){
+            if(ans < (right - left + 1)){
+                ans = right - left + 1;
             }
+            left--; right++;
         }
-        else{
-            int left = i - 1, right = i;
-            while(left >= 0 && right < str.size() && str[left] == str[right]){
-                if(ans < (right - left + 1)){
-                    ans = right - left + 1;
-                }
+        int left = i, right = i + 1;
+        while(left >= 0 && right < str.size() && str[left] == str[right]){
+            if(ans < (right - left + 1)){
+                ans = right - left + 1;
             }
+            left--; right++;
         }
     }
     cout << ans << endl;
