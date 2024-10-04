@@ -4,23 +4,23 @@ using namespace std;
 typedef long long ll;
 const int mod = 1000000007;
 #define max_n 1001
-#define MAX 1000001
 #define Quick() ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 
 /*created by: HiuDev*/
 
 int n, m;
 vector<int> List[max_n];
-int disc[max_n], low[max_n];
 int visited[max_n];
+vector<int> disc(max_n), low(max_n);
 int AP[max_n];
 int timer = 0;
 void input(){
-    memset(disc, 0, sizeof(disc));
-    memset(low, 0, sizeof(low));
-    memset(visited, 0, sizeof(visited));
-    memset(AP, 0, sizeof(AP));
     cin >> n >> m;
+    timer = 0;
+    memset(visited, 0, sizeof(visited));
+    disc.resize(max_n, 0);
+    low.resize(max_n, 0);
+    memset(AP, 0, sizeof(AP));
     for(int i = 1; i <= n; i++){
         List[i].clear();
     }
@@ -30,27 +30,26 @@ void input(){
         List[y].push_back(x);
     }
 }
-void Tarjan(int u, int par){
+void Tarjan(int u, int parent){
+    int child = 0;
     low[u] = disc[u] = ++timer;
     visited[u] = 1;
-    int child = 0;
     for(int v : List[u]){
         if(!visited[v]){
             Tarjan(v, u);
             ++child;
             low[u] = min(low[u], low[v]);
-            if(par != -1 && disc[u] <= low[v]){
+            if(parent != -1 && low[v] >= disc[u]){
                 AP[u] = 1;
             }
         }
         else{
             low[u] = min(low[u], disc[v]);
         }
-    }
-    if(par == -1 && child > 1) AP[u] = 1;
+    } 
+    if(parent == -1 && child > 1) AP[u] = 1;
 }
 void TestCase(){
-    timer = 0;
     input();
     for(int i = 1; i <= n; i++){
         if(!visited[i]){
@@ -58,7 +57,9 @@ void TestCase(){
         }
     }
     for(int i = 1; i <= n; i++){
-        if(AP[i]) cout << i << " ";
+        if(AP[i]){
+            cout << i << " ";
+        }
     }
     cout << endl;
 }

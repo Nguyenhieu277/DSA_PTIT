@@ -12,27 +12,24 @@ const int mod = 1000000007;
 void TestCase(){
     int n;
     cin >> n;
-    vector<int> nums;
+    vector<int> nums, span(n + 1, 1);
     for(int i = 0; i < n; i++){
         int x; cin >> x;
         nums.push_back(x);
     }
-    vector<int> In(n + 1, 1), Dec(n + 1, 1);
-    for(int i = 1; i < n; i++){
-        if(nums[i] > nums[i - 1]){
-            In[i] = In[i - 1] + 1;
-        }
-    }
-    for(int i = n - 2; i >= 0; i--){
-        if(nums[i] > nums[i + 1]){
-            Dec[i] = Dec[i + 1] + 1;
-        }
-    }
-    int res = 0;
+    stack<int> st;
     for(int i = 0; i < n; i++){
-        res = max(res, In[i] + Dec[i] - 1);
+        while(!st.empty() && nums[st.top()] <= nums[i]){
+            st.pop();
+        }
+        span[i] = (st.empty() ? i + 1 : (i - st.top()));
+
+        st.push(i);
     }
-    cout << res << endl;
+    for(int i = 0; i < n; i++){
+        cout << span[i] << " ";
+    }
+    cout << endl;
 }
 int main(){
     Quick();

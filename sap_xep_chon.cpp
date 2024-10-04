@@ -10,16 +10,20 @@ const int mod = 1000000007;
 /*created by: HiuDev*/
 
 void selectionSort(vector<int> &v, int n){
+    // Lặp qua từng phần tử trong vector trừ phần tử cuối cùng
     for(int i = 0; i < n - 1; i++){
-        int idx = i;
+        int idx = i; // Giả sử chỉ số hiện tại là nhỏ nhất
+        // Lặp qua các phần tử còn lại để tìm phần tử nhỏ nhất
         for(int j = i + 1; j < n; j++){
             if(v[j] < v[idx]){
-                idx = j;
+                idx = j; // Cập nhật idx nếu tìm thấy phần tử nhỏ hơn
             }
         }
+        // Hoán đổi phần tử nhỏ nhất tìm được với phần tử hiện tại
         if(i != idx){
             swap(v[i], v[idx]);
         }
+        // In ra trạng thái hiện tại của vector sau mỗi bước
         cout << "Buoc " << i + 1 << ": ";
         for(int k = 0; k < n; k++){
             cout << v[k] << " ";

@@ -17,22 +17,17 @@ void TestCase(){
         int x; cin >> x;
         nums.push_back(x);
     }
-    vector<int> In(n + 1, 1), Dec(n + 1, 1);
-    for(int i = 1; i < n; i++){
-        if(nums[i] > nums[i - 1]){
-            In[i] = In[i - 1] + 1;
-        }
+    if (n == 1) {
+        cout << nums[0] << endl;
+        return;
     }
-    for(int i = n - 2; i >= 0; i--){
-        if(nums[i] > nums[i + 1]){
-            Dec[i] = Dec[i + 1] + 1;
-        }
+    vector<ll> dp(n + 1, 0);
+    dp[0] = nums[0];
+    dp[1] = max(nums[1], nums[0]);
+    for(int i = 2; i < n; i++){
+        dp[i] = max(dp[i - 1], nums[i] + dp[i - 2]);
     }
-    int res = 0;
-    for(int i = 0; i < n; i++){
-        res = max(res, In[i] + Dec[i] - 1);
-    }
-    cout << res << endl;
+    cout << dp[n - 1] << endl;
 }
 int main(){
     Quick();

@@ -1,0 +1,1 @@
+{"name":"Local: sap_xep_chon","url":"d:\\work\\DSA_PTIT\\sap_xep_chon.cpp","tests":[{"id":1727750368002,"input":"10\n11 7 12 14 19 1 6 18 8 20","output":"Buoc 1: 2 7 3 5 \nBuoc 2: 2 3 7 5 \nBuoc 3: 2 3 5 7"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\work\\DSA_PTIT\\sap_xep_chon.cpp","group":"local","local":true}
