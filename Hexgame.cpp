@@ -1,66 +1,86 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 typedef long long ll;
-typedef vector<int> vi;
-const int mod = 1000000007;
-#define max_n 1001
-#define MAX 1000001
 #define Quick() ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 
 /*created by: HiuDev*/
 
-vi xoaytrai(vi a){
-    vi b(6);
-    b[0] = a[3];
-    b[1] = a[0];
-    b[2] = a[2];
-    b[3] = a[4];
-    b[4] = a[1];
-    b[5] = a[5];
-    return b;
+const vector<int> target = {1, 2, 3, 8, 0, 0, 4, 7, 6, 5};
+
+vector<int> spinLeft(const vector<int>& nums) {
+    vector<int> result = nums;
+    result[0] = nums[3];
+    result[1] = nums[0];
+    result[3] = nums[7];
+    result[5] = nums[1];
+    result[7] = nums[8];
+    result[8] = nums[5];
+    return result;
 }
 
-vi xoayphai(vi a){
-    vi b(6);
-    b[0] = a[0];
-    b[1] = a[4];
-    b[2] = a[1];
-    b[3] = a[3];
-    b[4] = a[5];
-    b[5] = a[2];
-    return b;
+vector<int> spinRight(const vector<int>& nums) {
+    vector<int> result = nums;
+    result[1] = nums[4];
+    result[2] = nums[1];
+    result[4] = nums[8];
+    result[6] = nums[2];
+    result[8] = nums[9];
+    result[9] = nums[6];
+    return result;
 }
 
-int bfs(vi s, vi t){
-    queue<pair<vi, int>> q;
-    set<vi> se;
-    q.push({s, 0});
-    se.insert(s);
-    while(!q.empty()){
-        pair<vi, int> tmp = q.front(); q.pop();
-        vi x = tmp.first;
-        if(x == t) return tmp.second;
-        vi trai = xoaytrai(x);
-        if(se.count(trai) == 0){
-            q.push({trai, tmp.second + 1});
-            se.insert(trai);
+string toString(const vector<int>& nums) {
+    string s;
+    for (int n : nums) s += to_string(n) + ",";
+    return s;
+}
+
+int BFS(const vector<int>& start) {
+    unordered_set<string> visited;
+    queue<pair<vector<int>, int>> q;
+    q.push({start, 0});
+    visited.insert(toString(start));
+
+    while (!q.empty()) {
+        auto [current, step] = q.front();
+        q.pop();
+        
+        if (current == target) return step;
+
+        vector<int> leftSpin = spinLeft(current);
+        vector<int> rightSpin = spinRight(current);
+
+        string leftStr = toString(leftSpin);
+        string rightStr = toString(rightSpin);
+
+        if (visited.find(leftStr) == visited.end()) {
+            q.push({leftSpin, step + 1});
+            visited.insert(leftStr);
         }
-        vi phai = xoayphai(x);
-        if(se.count(phai) == 0){
-            q.push({phai, tmp.second + 1});
-            se.insert(phai);
+
+        if (visited.find(rightStr) == visited.end()) {
+            q.push({rightSpin, step + 1});
+            visited.insert(rightStr);
         }
     }
-    return -1;
+
+    return -1; // Trường hợp không tìm thấy kết quả
 }
 
-int main(){
+void TestCase() {
+    vector<int> nums(10);
+    cin >> nums[0] >> nums[1] >> nums[2];
+    cin >> nums[3] >> nums[4] >> nums[5] >> nums[6];
+    cin >> nums[7] >> nums[8] >> nums[9];
+    cout << BFS(nums) << endl;
+}
+
+int main() {
     Quick();
-    vi s(6), t(6);
-    for(int i = 0; i < 6; i++) cin >> s[i];
-    for(int i = 0; i < 6; i++) cin >> t[i];
-    cout << bfs(s, t) << endl;
+    int t;
+    cin >> t;
+    while (t--) {
+        TestCase();
+    }
+    return 0;
 }
-
-/* No Code - No Bug */

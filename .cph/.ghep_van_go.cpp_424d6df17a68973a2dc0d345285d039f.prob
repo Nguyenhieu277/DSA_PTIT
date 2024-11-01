@@ -1,0 +1,1 @@
+{"name":"Local: ghep_van_go","url":"d:\\work\\DSA_PTIT\\ghep_van_go.cpp","tests":[{"id":1729092563630,"input":"4\n7\n5 2 4 3 3 1 4\n3\n2 2 2\n2\n6 6\n6\n5 5 5 5 3 1","output":"3\n2\n0\n3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\work\\DSA_PTIT\\ghep_van_go.cpp","group":"local","local":true}

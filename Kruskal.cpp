@@ -53,7 +53,6 @@ bool Union(int u, int v){
 }
 void Kruskal(){
     int total = 0;
-    priority_queue<pii, vector<pii>, greater<pii>> q;
     sort(List.begin(), List.end(), [](const Edge& a, const Edge& b) -> bool{
         return a.w < b.w;
     });

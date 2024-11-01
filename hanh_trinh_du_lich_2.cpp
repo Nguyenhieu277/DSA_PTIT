@@ -9,104 +9,102 @@ const int mod = 1000000007;
 
 /*created by: HiuDev*/
 
-int n, m, k;
-vector<pii> List[max_n];
+
+vector<pair<int, int>> List[max_n];
 vector<int> tourism;
-void input(){
+int n, m, k;
+void init(){
     cin >> n >> m >> k;
+    tourism.clear();
     for(int i = 1; i <= n; i++){
         List[i].clear();
     }
-    tourism.clear();
-    for(int i = 0; i < k; i++){
-        int x; cin >> x;
-        tourism.push_back(x);
+    for (int i = 0; i < k; i++) {
+        int tourist_node;
+        cin >> tourist_node;
+        tourism.push_back(tourist_node);
     }
+
     for(int i = 1; i <= m; i++){
-        int x, y, w;
-        cin >> x >> y >> w;
+        int x, y, w; cin >> x >> y >> w;
         List[x].push_back({y, w});
         List[y].push_back({x, w});
     }
 }
 vector<int> Dijkstra(int s){
-    vector<int> weight(n + 1, INT_MAX);
     priority_queue<pii, vector<pii>, greater<pii>> q;
-    weight[s] = 0;
+    vector<int> weight(n + 1, INT_MAX);
     q.push({0, s});
+    weight[s] = 0;
     while(!q.empty()){
         pii top = q.top();
         q.pop();
 
-        int u = top.second, distance = top.first;
+        int distance = top.first;
+        int u = top.second;
         if(distance > weight[u]) continue;
-        for(pii it : List[u]){
-            int v = it.first, w = it.second;
-            if(weight[u] + w < weight[v]){
-                weight[v] = weight[u] + w;
+        for(auto x : List[u]){
+            int v = x.first, dis = x.second;
+            if(weight[u] + dis < weight[v]){
+                weight[v] = weight[u] + dis;
                 q.push({weight[v], v});
             }
         }
     }
     return weight;
 }
-vector<vector<int>> dist_matrix;
-vector<int> path;
-ll minCost = LLONG_MAX;
-int visited[max_n];
-void backTracking(int idx, int currentCost){
-    if(path.size() == k){
-        currentCost += dist_matrix[path.back()][0];
-        if(currentCost < minCost){
-            minCost = currentCost;
-        }
-        return;
+int TSP(vector<vector<int>>& dist_matrix) {
+    int n = dist_matrix.size();
+    int k = tourism.size();
+    vector<vector<int>> dp(k, vector<int>(1 << k, INT_MAX));
+    
+    for(int i = 0; i < k; i++) {
+        dp[i][1 << i] = 0;
     }
-    else if(path.size() < k){
-        for(int i = 1; i < k; i++){
-            if(!visited[i]){
-                visited[i] = 1;
-                path.push_back(i);
-                backTracking(i, currentCost + dist_matrix[path[idx]][i]);
-                path.pop_back();
-                visited[i] = 0;
+    
+    for(int currentMask = 0; currentMask < (1 << k); currentMask++) {
+        if(__builtin_popcount(currentMask) == 1) {
+            continue;
+        } else {
+            for(int i = 0; i < k; i++) {
+                if(currentMask & (1 << i)) {
+                    int prevMask = currentMask - (1 << i);
+                    for(int j = 0; j < k; j++) {
+                        if(prevMask & (1 << j)) {
+                            dp[i][currentMask] = min(dp[i][currentMask], dp[j][prevMask] + dist_matrix[i][j]);
+                        }
+                    }
+                }
             }
         }
     }
+    
+    int ans = INT_MAX;
+    for(int i = 0; i < k; i++) {
+        ans = min(ans, dp[i][(1 << k) - 1]);
+    }
+    
+    return ans;
 }
 void TestCase(){
-    input();
-    dist_matrix.resize(k, vector<int>(k, INT_MAX));
-    path.clear();
-    minCost = LLONG_MAX;
-    memset(visited, 0, sizeof(visited));
+    init();
+    vector<vector<int>> dist_matrix(k + 1, vector<int> (k + 1, INT_MAX));
     for(int i = 0; i < k; i++){
         vector<int> dist = Dijkstra(tourism[i]);
         for(int j = 0; j < k; j++){
             dist_matrix[i][j] = dist[tourism[j]];
         }
     }
-    for(int i = 0; i < k; i++){
-        for(int j = 0; j < k; j++){
-            if(dist_matrix[i][j] == INT_MAX){
-                cout << -1 << endl;
-                return;
-            }
-        }
-    }
-    path.push_back(0);
-    visited[0] = 1;
-    backTracking(0, 0);
-    if(minCost == LLONG_MAX){
-        cout << -1 << endl;
-    }
-    else{
-        cout << minCost << endl;
-    }
+    int result = TSP(dist_matrix);
+    cout << result << "\n";
 }
 int main(){
     Quick();
-    TestCase();
+    int t;
+    cin >> t;
+    while(t--){
+        TestCase();
+    }
     return 0;
 }
 /* No Code - No Bug */
