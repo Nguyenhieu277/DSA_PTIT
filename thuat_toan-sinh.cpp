@@ -8,8 +8,9 @@ const int mod = 1000000007;
 
 /*created by: HiuDev*/
 
-int n, flag = 0;
 vector<int> nums(max_n);
+int n;
+int flag = 0;
 void init(){
     for(int i = 1; i <= (n + 1) / 2; i++){
         nums[i] = 0;
@@ -17,9 +18,9 @@ void init(){
 }
 void generate(){
     int i = (n + 1) / 2;
-    while(i >= 1 && nums[i] == 1){
+    while(i > 0 && nums[i] == 1){
         nums[i] = 0;
-        --i;
+        i--;
     }
     if(i == 0){
         flag = 1;
@@ -30,11 +31,12 @@ void generate(){
 }
 void TestCase(){
     cin >> n;
+    init();
     while(!flag){
         for(int i = 1; i <= (n + 1) / 2; i++){
             cout << nums[i] << " ";
         }
-        for(int i = (n) / 2; i >= 1; i--){
+        for(int i = n / 2; i >= 1; i--){
             cout << nums[i] << " ";
         }
         cout << endl;
@@ -43,10 +45,7 @@ void TestCase(){
 }
 int main(){
     Quick();
-    int t = 1;
-    while(t--){
-        TestCase();
-    }
+    TestCase();
     return 0;
 }
 /* No Code - No Bug */

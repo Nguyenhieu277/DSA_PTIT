@@ -4,14 +4,13 @@ using namespace std;
 typedef long long ll;
 const int mod = 1000000007;
 #define max_n 1001
-#define MAX 1000001
 #define Quick() ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 
 /*created by: HiuDev*/
 
 struct Node{
     int val;
-    Node *next;
+    Node* next;
 };
 typedef Node* node;
 node makeNode(int x){
@@ -24,6 +23,7 @@ void insert(node &head, int x){
     node newNode = makeNode(x);
     if(head == NULL){
         head = newNode;
+        return;
     }
     else{
         node tmp = head;
@@ -33,20 +33,22 @@ void insert(node &head, int x){
         tmp->next = newNode;
     }
 }
-void removeDuplicate(node &head){
-    unordered_set<int> se;
-    node current = head;
+void fillValue(node &head){
+    set<int> frequency;
     node prev = NULL;
+    node current = head;
     while(current != NULL){
-        if(se.find(current->val) != se.end()){
+        if(frequency.find(current->val) != frequency.end()){
             prev->next = current->next;
-            delete current;
+            node tmp = current;
+            current = current->next;
+            delete tmp;
         }
         else{
-            se.insert(current->val);
+            frequency.insert(current->val);
             prev = current;
+            current = current->next;
         }
-        current = prev->next;
     }
 }
 void printNode(node head){
@@ -57,22 +59,19 @@ void printNode(node head){
     cout << endl;
 }
 void TestCase(){
-    node head = NULL;
     int n;
     cin >> n;
+    node head = NULL;
     for(int i = 0; i < n; i++){
         int x; cin >> x;
         insert(head, x);
     }
-    removeDuplicate(head);
+    fillValue(head);
     printNode(head);
 }
 int main(){
     Quick();
-    int t = 1;
-    while(t--){
-        TestCase();
-    }
+    TestCase();
     return 0;
 }
 /* No Code - No Bug */

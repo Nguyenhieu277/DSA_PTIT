@@ -4,35 +4,37 @@ using namespace std;
 typedef long long ll;
 const int mod = 1000000007;
 #define max_n 1001
-#define MAX 1000001
 #define Quick() ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 
 /*created by: HiuDev*/
 
-int KadaneAlgorithm(vector<int> &v, int n){
-    int maxCurrent = v[0];
-    int maxAns = v[0];
+void KadaneAlgorithm(vector<int>& nums, int n){
+    int maxAns = INT_MIN;
+    int currentAns = nums[0];
     for(int i = 1; i < n; i++){
-        maxCurrent = max(v[i], maxCurrent + v[i]);
-        if(maxCurrent > maxAns){
-            maxAns = maxCurrent;
+        currentAns = max(nums[i], currentAns + nums[i]);
+        if(maxAns < currentAns){
+            maxAns = currentAns;
         }
     }
-    return maxAns;
+    cout << maxAns << endl;
+}
+void TestCase(){
+    int n;
+    cin >> n;
+    vector<int> nums;
+    for(int i = 0; i < n; i++){
+        int x; cin >> x;
+        nums.push_back(x);
+    }
+    KadaneAlgorithm(nums, n);
 }
 int main(){
     Quick();
     int t;
     cin >> t;
     while(t--){
-        int n;
-        cin >> n;
-        vector<int> v;
-        for(int i = 0; i < n; i++){
-            int x; cin >> x;
-            v.push_back(x);
-        }
-        cout << KadaneAlgorithm(v, n) << endl;
+        TestCase();
     }
     return 0;
 }

@@ -4,55 +4,56 @@ using namespace std;
 typedef long long ll;
 const int mod = 1000000007;
 #define max_n 1001
-#define MAX 1000001
 #define Quick() ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 
 /*created by: HiuDev*/
 
-struct Node{
+struct node{
     int val;
-    Node *next;
+    node* next;
 };
-typedef Node* node;
-node makeNode(int x){
-    node newNode = new Node;
-    newNode->val = x;
-    newNode->next = NULL;
-    return newNode;
+typedef node* Node;
+Node makeNode(int x){
+    Node tmp = new node;
+    tmp->val = x;
+    tmp->next = NULL;
+    return tmp;
 }
-void insert(node &head, int x){
-    node newNode = makeNode(x);
+void insert(Node &head, int x){
     if(head == NULL){
-        head = newNode;
+        Node tmp = makeNode(x);
+        head = tmp;
+        return;
     }
-    else{
-        node tmp = head;
-        while(tmp->next != NULL){
-            tmp = tmp->next;
-        }
-        tmp->next = newNode;
+    Node newNode = makeNode(x);
+    Node tmp = head;
+    while(tmp->next != NULL){
+        tmp = tmp->next;
     }
+    tmp->next = newNode;
 }
-void removeValue(node &head, int x){
-    while(head != NULL && head->val == x){
-        node tmp = head;
-        head = head->next;
-        delete tmp;
-    }
-    node current = head;
-    node prev = NULL;
+void removeValue(Node &head, int x){
+    Node prev = NULL;
+    Node current = head;
     while(current != NULL){
         if(current->val == x){
-            prev->next = current->next;
-            delete current;
+            Node tmp = current;
+            if(prev == NULL){
+                head = current->next;
+            }
+            else{
+                prev->next = current->next;
+            }
+            current = current->next;
+            delete tmp;
         }
         else{
             prev = current;
+            current = current->next;
         }
-        current = prev->next;
     }
 }
-void printNode(node head){
+void printNode(Node head){
     while(head != NULL){
         cout << head->val << " ";
         head = head->next;
@@ -60,23 +61,21 @@ void printNode(node head){
     cout << endl;
 }
 void TestCase(){
+    Node head = NULL;
     int n;
     cin >> n;
-    node head = NULL;
     for(int i = 0; i < n; i++){
         int x; cin >> x;
         insert(head, x);
     }
-    int x; cin >> x;
+    int x;
+    cin >> x;
     removeValue(head, x);
     printNode(head);
 }
 int main(){
     Quick();
-    int t = 1;
-    while(t--){
-        TestCase();
-    }
+    TestCase();
     return 0;
 }
 /* No Code - No Bug */

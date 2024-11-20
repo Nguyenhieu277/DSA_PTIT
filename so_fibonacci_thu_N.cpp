@@ -4,51 +4,49 @@ using namespace std;
 typedef long long ll;
 const int mod = 1000000007;
 #define max_n 1001
-#define MAX 1000001
 #define Quick() ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 
 /*created by: HiuDev*/
 
 struct Matrix{
-    ll a[2][2];
-    friend Matrix operator * (Matrix x, Matrix y){
+    ll matrix[2][2];
+    friend Matrix operator * (Matrix a, Matrix b){
         Matrix res;
         for(int i = 0; i < 2; i++){
             for(int j = 0; j < 2; j++){
-                res.a[i][j] = 0;
+                res.matrix[i][j] = 0;
                 for(int k = 0; k < 2; k++){
-                    res.a[i][j] += (x.a[i][k] * y.a[k][j]) % mod;
+                    res.matrix[i][j] += (a.matrix[i][k] * b.matrix[k][j]) % mod;
                 }
-                res.a[i][j] %= mod;
+                res.matrix[i][j] %= mod;
             }
         }
         return res;
     };
 };
-Matrix binPow(Matrix x, int n){
+Matrix binPow(Matrix a, ll n){
     if(n == 1){
-        return x;
+        return a;
     }
-    Matrix k = binPow(x, n / 2);
+    Matrix k = binPow(a, n / 2);
     if(n & 1){
-        return k * k * x;
+        return k * k * a;
     }
     else return k * k;
 }
-Matrix matrix;
-void init(){
-    matrix.a[0][0] = matrix.a[0][1] = matrix.a[1][0] = 1;
-    matrix.a[1][1] = 0;
-}
+Matrix a;
 void TestCase(){
-    int n;
+    ll n;
     cin >> n;
-    Matrix res = binPow(matrix, n);
-    cout << res.a[0][1] << endl;
+    Matrix res = binPow(a, n);
+    cout << res.matrix[0][1] << endl;
 }
 int main(){
     Quick();
-    init();
+    a.matrix[0][0] = 1;
+    a.matrix[0][1] = 1;
+    a.matrix[1][0] = 1;
+    a.matrix[1][1] = 0;
     int t;
     cin >> t;
     while(t--){

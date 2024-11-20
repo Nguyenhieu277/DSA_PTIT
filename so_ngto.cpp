@@ -8,13 +8,13 @@ const int mod = 1000000007;
 
 /*created by: HiuDev*/
 
+int prime[max_n];
 int n, p, s;
-vector<int> current;
 vector<int> primes;
 vector<vector<int>> res;
-vector<int> prime(max_n);
+vector<int> current;
 void sieve(){
-    for(int i = 2; i <= max_n; i++){
+    for(int i = 2; i < max_n; i++){
         prime[i] = 1;
     }
     for(int i = 2; i <= sqrt(max_n); i++){
@@ -34,10 +34,10 @@ void backTracking(int idx, int sum){
     if(current.size() == n){
         if(sum == s){
             res.push_back(current);
-        }
+        } 
         return;
     }
-    else if(sum > s || current.size() > n){
+    else if(current.size() > n || sum > s){
         return;
     }
     else{
@@ -50,10 +50,10 @@ void backTracking(int idx, int sum){
     }
 }
 void TestCase(){
-    cin >> n >> p >> s;
-    res.clear();
     current.clear();
-    auto start = lower_bound(primes.begin(), primes.end(), p + 1) - primes.begin();
+    res.clear();
+    cin >> n >> p >> s;
+    int start = lower_bound(primes.begin(), primes.end(), p + 1) - primes.begin();
     backTracking(start, 0);
     cout << res.size() << endl;
     for(auto it : res){

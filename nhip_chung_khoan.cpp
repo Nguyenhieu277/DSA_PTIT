@@ -8,28 +8,33 @@ const int mod = 1000000007;
 
 /*created by: HiuDev*/
 
-
-void TestCase(){
-    int n;
-    cin >> n;
-    vector<int> nums, span(n + 1, 1);
-    for(int i = 0; i < n; i++){
-        int x; cin >> x;
-        nums.push_back(x);
-    }
+void solve(vector<int>& nums, int n){
+    vector<int> span(n + 1, 1);
     stack<int> st;
     for(int i = 0; i < n; i++){
-        while(!st.empty() && nums[st.top()] <= nums[i]){
+        while(!st.empty() && nums[i] >= nums[st.top()]){
             st.pop();
         }
-        span[i] = (st.empty() ? i + 1 : (i - st.top()));
-
+        if(st.empty()){
+            span[i] = i + 1;
+        }
+        else span[i] = i - st.top();
         st.push(i);
     }
     for(int i = 0; i < n; i++){
         cout << span[i] << " ";
     }
     cout << endl;
+}
+void TestCase(){
+    int n;
+    cin >> n;
+    vector<int> nums;
+    for(int i = 0; i < n; i++){
+        int x; cin >> x;
+        nums.push_back(x);
+    }
+    solve(nums, n);
 }
 int main(){
     Quick();

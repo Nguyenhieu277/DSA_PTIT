@@ -4,32 +4,34 @@ using namespace std;
 typedef long long ll;
 const int mod = 1000000007;
 #define max_n 1001
-#define MAX 1000001
 #define Quick() ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 
 /*created by: HiuDev*/
 
-ll binPow(ll a, ll n){
+ll binPow(ll n, ll k){
+    n %= mod;
     ll res = 1;
-    a %= mod;
-    while(n != 0){
-        if(n & 1){
-            res *= (a % mod);
+    while(k != 0){
+        if(k & 1){
+            res *= (n % mod);
             res %= mod;
         }
-        a = (a * a) % mod;
-        n >>= 1;
+        k >>= 1;
+        n = (n * n) % mod;
     }
     return res;
+}
+void TestCase(){
+    ll n, k;
+    cin >> n >> k;
+    cout << binPow(n, k) << endl;
 }
 int main(){
     Quick();
     int t;
     cin >> t;
     while(t--){
-        ll n, k;
-        cin >> n >> k;
-        cout << binPow(n, k) << endl;
+        TestCase();
     }
     return 0;
 }
